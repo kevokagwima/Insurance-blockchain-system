@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block title %}
+Insuarance | Login
+{% endblock %}
+
+{% block body %}
+<div class="form">
+  <h4>Sign In</h4>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <div class="input">
+      {{ form.email_address.label }}
+      {{ form.email_address(placeholder="Enter Email Address") }}
+    </div>
+    <div class="input">
+      {{ form.password.label }}
+      {{ form.password(placeholder="Enter Password") }}
+    </div>
+    <button class="btn" type="submit">
+      <span class="button--text">SIGN IN</span>
+    </button>
+  </form>
+</div>
+{% endblock %}

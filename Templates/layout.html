@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+  <title>
+    {% block title %} {% endblock %}
+  </title>
+</head>
+{% endblock %}
+
+<body>
+  <header>
+    <div id="logo">
+      <a href="{{ url_for('home') }}">
+        <h4>INSURANCE</h4>
+      </a>
+    </div>
+    <div class="links">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <div class="user">
+      {% if current_user.is_authenticated %}
+      <div class="login">
+        <p>Welcome, <b>{{ current_user.first_name }} {{ current_user.last_name }}</b></p>
+      </div>
+      {% else %}
+      <a href="{{ url_for('login') }}">Sign In</a>
+      <a href="{{ url_for('registration') }}">Sign Up</a>
+      {% endif %}
+    </div>
+  </header>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="tops">
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}">
+      <div class="side"></div>
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+  {% block body %} {% endblock %}
+</body>
+<script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+
+</html>

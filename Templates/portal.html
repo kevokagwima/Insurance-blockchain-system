@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+{% endblock %}
+
+{% block title %}
+Insurance | Insurance Portal
+{% endblock %}
+
+{% block content %}
+<button onclick="openView(event, 'home')" id="defaultOpen">
+  <img src="{{ url_for('static', filename='Images/home.png') }}" alt="home-icon">
+  <p>Home</p>
+</button>
+<button onclick="openView(event, 'report')">
+  <img src="{{ url_for('static', filename='Images/clipboard.png') }}" alt="reports-icon">
+  <p>Reports</p>
+</button>
+<button onclick="openView(event, 'best')">
+  <img src="{{ url_for('static', filename='Images/best.png') }}" alt="best-icon">
+  <p>Best Seller</p>
+</button>
+<button onclick="openView(event, 'payment')">
+  <img src="{{ url_for('static', filename='Images/security.png') }}" alt="payment-icon">
+  <p>Payment</p>
+</button>
+{% endblock %}
+
+{% block body %}
+<div class="content-area">
+  <div id="home" class="tabcontent">
+    <h4 id="dash">Home</h4>
+  </div>
+  <div id="report" class="tabcontent">
+    <h4 id="dash">Reports</h4>
+  </div>
+  <div id="best" class="tabcontent">
+    <h4 id="dash">Best</h4>
+  </div>
+  <div id="payment" class="tabcontent">
+    <h4 id="dash">Payments</h4>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/portal.js') }}"></script>
+{% endblock %}

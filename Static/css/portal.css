@@ -1,0 +1,41 @@
+.links button {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: whitesmoke;
+  border-radius: 10rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.links button:hover,
+.links button:focus {
+  outline: 2px solid greenyellow;
+}
+
+.links button img {
+  max-height: 1.8rem;
+}
+
+.links button p {
+  font-family: var(--links-font);
+  font-size: 1rem;
+}
+
+.content-area {
+  background-color: var(--lighter-bgcolor);
+  padding: 2rem 2rem 1rem 3rem;
+  margin-top: 4.1rem;
+  min-height: 50vh;
+  color: white;
+}
+
+#dash {
+  color: whitesmoke;
+  font-size: 2rem;
+  font-family: var(--links-font);
+  letter-spacing: 1px;
+}

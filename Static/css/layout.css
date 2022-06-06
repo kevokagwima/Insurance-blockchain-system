@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Contrail+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mallanna&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bgcolor: #040d21;
+  --lighter-bgcolor: #042c6a;
+  --red: #ec1848;
+  --logo-font: "Contrail One", cursive;
+  --links-font: "Mallanna", sans-serif;
+  --heading-font: "Cutive", serif;
+  --paragraph-font: "Lato", sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+  background-color: var(--main-bgcolor);
+}
+
+header {
+  min-height: 3rem;
+  background-color: var(--main-bgcolor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: fixed;
+  top: 0;
+  min-width: 100vw;
+  z-index: 10;
+}
+
+#logo > a {
+  font-family: var(--logo-font);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: white;
+  text-decoration: none;
+}
+
+.login p {
+  color: whitesmoke;
+  font-family: var(--links-font);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.login p > b {
+  color: greenyellow;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+.user {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.user a {
+  text-decoration: none;
+  color: rgb(166, 166, 166);
+  font-family: var(--links-font);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.user a:hover {
+  color: whitesmoke;
+}
+
+.btn--loading .button--text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.btn--loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.tops {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  min-width: 60rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2px 0 0;
+  animation: fade-away 1s 5s forwards;
+}
+
+@keyframes fade-away {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.alert {
+  height: 3.5rem;
+  font-family: system-ui;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 4px;
+  min-width: 10vw;
+  max-width: 40vw;
+  margin-inline: auto;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding-right: 1rem;
+  box-shadow: 0 0 10px -6px black;
+}
+.side {
+  height: 100%;
+  width: 8px;
+  background-color: white;
+}
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert .alert-link {
+  font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+.alert-success .alert-link {
+  color: #2b542c;
+}
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+.alert-info .alert-link {
+  color: #245269;
+}
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+.alert-warning .alert-link {
+  color: #66512c;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+.alert-danger .alert-link {
+  color: #843534;
+}

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block title %}
+Insurance | Home
+{% endblock %}
+
+{% block body %}
+<div class="home">
+  <h4>Get an insurance cover <br> that best suites <br> you</h4>
+  <p>No more over-payment for insurance cover <br> you don't need</p>
+  {% if session %}
+  <a href="{{ url_for('questions') }}">
+    <button id="btn">Resume Session</button>
+  </a>
+  {% else %}
+  <a href="{{ url_for('session') }}">
+    <button id="btn">Get Started</button>
+  </a>
+  {% endif %}
+  <img src="{{ url_for('static', filename='Images/insuarance.png') }}" alt="insuarance">
+</div>
+{% endblock %}

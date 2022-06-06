@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/questions.css') }}">
+{% endblock %}
+
+{% block title %}
+Insurance | Questions
+{% endblock %}
+
+{% block body %}
+<div class="questions">
+  <p id="unique">Session ID -
+    <span>{{ session.session_id }}</span>
+  </p>
+  {% if session.major_insurance %}
+  {% for insurance in major_insurances if insurance.id == session.major_insurance %}
+  <p id="uniques">{{ insurance.name }}</p>
+  {% endfor %}
+  {% endif %}
+  <h4>Answer the following questions <br> to customize your cover</h4>
+  <form action="{{ url_for('select_major_insurance') }}" method="post">
+    {% if session.major_insurance %}
+    {% else %}
+    <div class="input">
+      <label for="type">Select type of cover</label>
+      <select name="type" id="type">
+        {% for major in major_insurances %}
+        <option value="{{ major.id }}">{{ major.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
+    {% if session.major_insurance == 1 %}
+    <div class="input">
+      <label>Select beneficiary of cover</label>
+      <select name="type">
+        <option selected disabled value="">Choose your answer</option>
+        <option value="Personal`">Personal</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <button class="btn" type="submit">
+      <span class="button--text">SUBMIT</span>
+    </button>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}
