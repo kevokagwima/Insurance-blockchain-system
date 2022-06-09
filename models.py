@@ -5,9 +5,8 @@ from flask_login import UserMixin
 
 app = Flask(__name__)
 
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 bcrypt = Bcrypt(app)
-
 class User(db.Model, UserMixin):
   __tablename__ = 'members'
   id = db.Column(db.Integer(), primary_key=True)
@@ -19,7 +18,7 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(50), nullable=False)
   password = db.Column(db.String(100), nullable=False)
   session = db.relationship("Session", backref="session", lazy=True)
-  questions = db.relationship("Questions", backref="user-questions", lazy=True)
+  questions = db.relationship("Answers", backref="user-questions", lazy=True)
 
   @property
   def passwords(self):
@@ -39,6 +38,7 @@ class Major_Insurance(db.Model):
   name = db.Column(db.String(30), nullable=False, unique=True)
   insurance_cover = db.relationship("Insurance_covers", backref="sub-category", lazy=True)
   session = db.relationship("Session", backref="major_session", lazy=True)
+  session = db.relationship("Answers", backref="major_answers", lazy=True)
 
 class Insurance_covers(db.Model):
   __tablename__ = 'Insurance_cover'
@@ -61,14 +61,15 @@ class Session(db.Model):
   user = db.Column(db.Integer(), db.ForeignKey('members.id'))
   major_insurance = db.Column(db.Integer(), db.ForeignKey('Major_insurance.id'))
   insurance_cover = db.Column(db.Integer(), db.ForeignKey('Insurance_cover.id'))
-  questions = db.relationship("Questions", backref="session-questions", lazy=True)
+  questions = db.relationship("Answers", backref="session-questions", lazy=True)
 
-class Questions(db.Model):
-  __tablename__ = 'questions'
+class Answers(db.Model):
+  __tablename__ = 'answers'
   id = db.Column(db.Integer(), primary_key=True)
   unique_id = db.Column(db.Integer(), nullable=False, unique=True)
-  name = db.Column(db.String(3), nullable=False, unique=True)
+  choice = db.Column(db.String(3), nullable=False, unique=True)
   point = db.Column(db.Integer(), nullable=False, default=0)
   Hash = db.Column(db.String(), nullable=False)
   user = db.Column(db.Integer(), db.ForeignKey('members.id'))
+  major_Insurance = db.Column(db.Integer(), db.ForeignKey('Major_insurance.id'))
   session = db.Column(db.Integer(), db.ForeignKey('Session.id'))

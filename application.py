@@ -1,11 +1,13 @@
 import os, random, datetime
 from flask import Flask, render_template, request, flash,redirect, url_for
 from flask_login import current_user, login_manager, LoginManager, login_user, login_required, logout_user
+from questions import Life_insurance, Health_insurance, auto_insurance
 from models import *
 from form import *
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "mssql://@KEVINKAGWIMA/insuarance?driver=SQL SERVER"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.config["SECRET_KEY"] = os.environ['Hms_secret_key']
 
 db.init_app(app)
@@ -19,7 +21,7 @@ def load_user(user_id):
   try:
     return User.query.filter_by(phone_number=user_id).first()
   except:
-    flash(f"Could not load user into session", category="danger")
+    flash(f"Failed to login the user", category="danger")
 
 @app.route("/member-registration", methods=["POST", "GET"])
 def registration():
@@ -73,12 +75,9 @@ def logout():
 @app.route("/")
 @app.route("/home")
 def home():
-  if current_user.is_authenticated:
-    session = Session.query.filter_by(user=current_user.id, status="Active").first()
-    if session:
-      return render_template("home.html", session=session)
+  session = Session.query.filter_by(user=current_user.id, status="Active").first()
   
-  return render_template("home.html")
+  return render_template("home.html", session=session)
 
 @app.route("/session")
 def session():
@@ -104,7 +103,7 @@ def session():
 def questions():
   session = Session.query.filter_by(user=current_user.id).first()
   major_insurances = Major_Insurance.query.all()
-  questions = Questions.query.all()
+  questions = Life_insurance.items()
 
   return render_template("questions.html", session=session, major_insurances=major_insurances, questions=questions)
 

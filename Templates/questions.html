@@ -11,9 +11,11 @@ Insurance | Questions
 
 {% block body %}
 <div class="questions">
+  {% if session %}
   <p id="unique">Session ID -
     <span>{{ session.session_id }}</span>
   </p>
+  {% endif %}
   {% if session.major_insurance %}
   {% for insurance in major_insurances if insurance.id == session.major_insurance %}
   <p id="uniques">{{ insurance.name }}</p>
@@ -31,16 +33,22 @@ Insurance | Questions
         {% endfor %}
       </select>
     </div>
+    <button class="btn" type="submit">
+      <span class="button--text">SUBMIT</span>
+    </button>
     {% endif %}
     {% if session.major_insurance == 1 %}
+    {% for question in questions %}
     <div class="input">
-      <label>Select beneficiary of cover</label>
-      <select name="type">
+      <label>{{ question[1]['question'] }}</label>
+      <select required name="type">
         <option selected disabled value="">Choose your answer</option>
-        <option value="Personal`">Personal</option>
-        <option value="Other">Other</option>
+        {% for choices in question[1]['choices'] %}
+        <option value="{{ choices }}">{{ choices }}</option>
+        {% endfor %}
       </select>
     </div>
+    {% endfor %}
     <button class="btn" type="submit">
       <span class="button--text">SUBMIT</span>
     </button>

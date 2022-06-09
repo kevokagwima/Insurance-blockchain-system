@@ -52,7 +52,7 @@ form {
   gap: 10px;
   min-width: 60vw;
   max-width: 60vw;
-  margin: auto;
+  margin: 0 auto;
   color: whitesmoke;
 }
 
