@@ -98,29 +98,59 @@ def session():
     flash(f"Your questions are ready", category="success")
   return redirect(url_for('questions'))
 
-@app.route("/questions")
-@login_required
-def questions():
-  session = Session.query.filter_by(user=current_user.id).first()
-  major_insurances = Major_Insurance.query.all()
-  questions = Life_insurance.items()
-
-  return render_template("questions.html", session=session, major_insurances=major_insurances, questions=questions)
-
 @app.route("/select-major-insurance", methods=["POST", "GET"])
 @login_required
 def select_major_insurance():
   selected_type = request.form.get("type")
-  session = Session.query.filter_by(user=current_user.id).first()
+  session = Session.query.filter_by(user=current_user.id, status="Active").first()
   session.major_insurance = selected_type
   db.session.commit()
   flash(f"Insurance Cover selected successfully", category="success")
   return redirect(url_for('questions'))
 
-@app.route("/insuarance-portal")
+@app.route("/questions")
+@login_required
+def questions():
+  session = Session.query.filter_by(user=current_user.id, status="Active").first()
+  major_insurances = Major_Insurance.query.all()
+  questions = Life_insurance.items()
+
+  return render_template("questions.html", session=session, major_insurances=major_insurances, questions=questions)
+
+@app.route("/answers", methods=["POST", "GET"])
+@login_required
+def answers():
+  session = Session.query.filter_by(user=current_user.id, status="Active").first()
+  major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
+  answers = request.form.getlist("answer")
+  for answer in answers:
+    new_answer = Answers(
+      unique_id = random.randint(10000000,99999999),
+      choice = answer,
+      Hash = bcrypt.generate_password_hash("12345").decode("utf-8"),
+      user = current_user.id,
+      major_Insurance = major_Insurance.id,
+      session = session.id
+    )
+    db.session.add(new_answer)
+    if answer == "Yes":
+      new_answer.point = 5
+    else:
+      new_answer.point = 2
+  session.end_date = datetime.datetime.now()
+  session.status = "Closed"
+  db.session.commit()
+  flash(f"{len(answers)} answers received", category="success")
+  return redirect(url_for('portal'))
+
+@app.route("/summary")
 @login_required
 def portal():
-  return render_template("portal.html")
+  session = Session.query.filter_by(user=current_user.id, status="Closed").first()
+  major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
+  answers = Answers.query.filter_by(user=current_user.id, session=session.id).all()
+
+  return render_template("portal.html", session=session, major_Insurance=major_Insurance, answers=answers)
 
 if __name__ == '__main__':
   app.run(debug=True)

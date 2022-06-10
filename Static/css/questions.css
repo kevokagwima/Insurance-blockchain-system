@@ -46,6 +46,10 @@ form {
   gap: 1rem;
 }
 
+#form1 {
+  justify-content: center;
+}
+
 .input {
   display: flex;
   flex-direction: column;
@@ -96,11 +100,4 @@ input:focus {
   font-size: 1rem;
   letter-spacing: 1px;
   position: relative;
-  transition: 0.2s ease;
-}
-
-.btn:hover,
-.btn:focus {
-  background-color: greenyellow;
-  color: black;
 }

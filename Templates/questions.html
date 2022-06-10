@@ -22,9 +22,9 @@ Insurance | Questions
   {% endfor %}
   {% endif %}
   <h4>Answer the following questions <br> to customize your cover</h4>
-  <form action="{{ url_for('select_major_insurance') }}" method="post">
-    {% if session.major_insurance %}
-    {% else %}
+  {% if session.major_insurance %}
+  {% else %}
+  <form id="form1" action="{{ url_for('select_major_insurance') }}" method="post">
     <div class="input">
       <label for="type">Select type of cover</label>
       <select name="type" id="type">
@@ -36,12 +36,14 @@ Insurance | Questions
     <button class="btn" type="submit">
       <span class="button--text">SUBMIT</span>
     </button>
-    {% endif %}
-    {% if session.major_insurance == 1 %}
+  </form>
+  {% endif %}
+  {% if session.major_insurance == 1 %}
+  <form method="post" action="{{ url_for('answers') }}">
     {% for question in questions %}
     <div class="input">
       <label>{{ question[1]['question'] }}</label>
-      <select required name="type">
+      <select required name="answer">
         <option selected disabled value="">Choose your answer</option>
         {% for choices in question[1]['choices'] %}
         <option value="{{ choices }}">{{ choices }}</option>
@@ -52,7 +54,7 @@ Insurance | Questions
     <button class="btn" type="submit">
       <span class="button--text">SUBMIT</span>
     </button>
-    {% endif %}
   </form>
+  {% endif %}
 </div>
 {% endblock %}

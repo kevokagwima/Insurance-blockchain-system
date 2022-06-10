@@ -67,9 +67,9 @@ class Answers(db.Model):
   __tablename__ = 'answers'
   id = db.Column(db.Integer(), primary_key=True)
   unique_id = db.Column(db.Integer(), nullable=False, unique=True)
-  choice = db.Column(db.String(3), nullable=False, unique=True)
+  choice = db.Column(db.String(3), nullable=False)
   point = db.Column(db.Integer(), nullable=False, default=0)
-  Hash = db.Column(db.String(), nullable=False)
+  Hash = db.Column(db.String(100), nullable=False)
   user = db.Column(db.Integer(), db.ForeignKey('members.id'))
   major_Insurance = db.Column(db.Integer(), db.ForeignKey('Major_insurance.id'))
   session = db.Column(db.Integer(), db.ForeignKey('Session.id'))

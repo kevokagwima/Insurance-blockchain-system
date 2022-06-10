@@ -24,13 +24,18 @@
 
 #btn {
   margin-top: 3rem;
-  padding: 1.1em 3.4em;
+  padding: 1em 2em;
   border-radius: 10rem;
   font-size: 1.1rem;
   font-family: system-ui;
   background-color: greenyellow;
   border: none;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#btn:hover {
+  transform: scale(1.1);
 }
 
 .home > img {
