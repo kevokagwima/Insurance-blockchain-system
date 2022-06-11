@@ -1,5 +1,6 @@
-const btn = document.querySelector(".btn");
+const profile = document.querySelector(".profile");
+const login = document.querySelector(".login");
 
-btn.addEventListener("click", () => {
-  btn.classList.toggle("btn--loading");
+login.addEventListener("click", () => {
+  profile.classList.toggle("show-profile");
 });

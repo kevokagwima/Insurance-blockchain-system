@@ -75,9 +75,11 @@ def logout():
 @app.route("/")
 @app.route("/home")
 def home():
-  session = Session.query.filter_by(user=current_user.id, status="Active").first()
-  
-  return render_template("home.html", session=session)
+  if current_user.is_authenticated:
+    session = Session.query.filter_by(user=current_user.id, status="Active").first()
+    return render_template("home.html", session=session)
+  else:
+    return render_template("home.html")
 
 @app.route("/session")
 def session():
@@ -101,12 +103,16 @@ def session():
 @app.route("/select-major-insurance", methods=["POST", "GET"])
 @login_required
 def select_major_insurance():
-  selected_type = request.form.get("type")
   session = Session.query.filter_by(user=current_user.id, status="Active").first()
-  session.major_insurance = selected_type
-  db.session.commit()
-  flash(f"Insurance Cover selected successfully", category="success")
-  return redirect(url_for('questions'))
+  if session:
+    selected_type = request.form.get("type")
+    session.major_insurance = selected_type
+    db.session.commit()
+    flash(f"Insurance Cover selected successfully", category="success")
+    return redirect(url_for('questions'))
+  else:
+    flash(f"No session has been created", category="danger")
+    return redirect(url_for('home'))
 
 @app.route("/questions")
 @login_required

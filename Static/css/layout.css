@@ -60,6 +60,7 @@ header {
   font-family: var(--links-font);
   font-size: 1.2rem;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .login p > b {
@@ -86,6 +87,44 @@ header {
 
 .user a:hover {
   color: whitesmoke;
+}
+
+.profile {
+  background-color: var(--lighter-bgcolor);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  position: absolute;
+  inset: 4rem 2rem auto auto;
+  min-width: 16.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transform: translateX(18rem);
+  outline: 2px solid white;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.profile a {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 0.5rem;
+  font-family: "Dancing Script", cursive;
+  font-family: "Varela Round", sans-serif;
+  transition: 0.3s ease;
+  font-size: 15px;
+}
+
+.profile a:hover,
+.profile a:focus {
+  background-color: var(--main-bgcolor);
+  border-radius: 0.2rem;
+  text-indent: 10px;
+}
+
+.show-profile {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .btn--loading .button--text {
