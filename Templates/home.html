@@ -10,18 +10,63 @@ Insurance | Home
 {% endblock %}
 
 {% block body %}
-<div class="home">
-  <h4>Get an insurance cover <br> that best suites <br> you</h4>
-  <p>No more over-payment for insurance cover <br> you don't need</p>
-  {% if session %}
-  <a href="{{ url_for('questions') }}">
-    <button id="btn">Resume Session</button>
-  </a>
-  {% else %}
-  <a href="{{ url_for('session') }}">
-    <button id="btn">Get Started</button>
-  </a>
-  {% endif %}
-  <img src="{{ url_for('static', filename='Images/insuarance.png') }}" alt="insuarance">
+<div class="snap">
+  <div class="home">
+    <h4>Get an insurance cover <br> that best suites <br> you</h4>
+    <p>No more over-payment for insurance cover <br> you don't need</p>
+    {% if session %}
+    <a href="{{ url_for('questions') }}">
+      <button id="btn">Resume Session</button>
+    </a>
+    {% else %}
+    <a href="{{ url_for('session') }}">
+      <button id="btn">Get Started</button>
+    </a>
+    {% endif %}
+    <img src="{{ url_for('static', filename='Images/insuarance.png') }}" alt="insuarance">
+  </div>
+  <div class="get-started">
+    <h4>How it works</h4>
+    <div class="steps">
+      <div class="step-details">
+        <img src="{{ url_for('static', filename='Images/Mobile login-pana.png') }}" alt="steps">
+        <div class="step-info">
+          <h4>First, Sign up for an account</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium beatae repellat facilis! Dolores
+            perferendis nulla sit ex sequi provident repudiandae laboriosam? Quod corporis saepe labore modi atque
+            expedita error! Accusantium!</p>
+        </div>
+      </div>
+      <div class="step-details">
+        <img src="{{ url_for('static', filename='Images/Choose-rafiki.png') }}" alt="steps">
+        <div class="step-info">
+          <h4>Second, Choose a major insurance cover</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium beatae repellat facilis! Dolores
+            perferendis nulla sit ex sequi provident repudiandae laboriosam? Quod corporis saepe labore modi atque
+            expedita error! Accusantium!</p>
+        </div>
+      </div>
+      <div class="step-details">
+        <img src="{{ url_for('static', filename='Images/Online test-rafiki.png') }}" alt="steps">
+        <div class="step-info">
+          <h4>Thirdly, Answer the questions provided</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium beatae repellat facilis! Dolores
+            perferendis nulla sit ex sequi provident repudiandae laboriosam? Quod corporis saepe labore modi atque
+            expedita error! Accusantium!</p>
+        </div>
+      </div>
+      <div class="step-details">
+        <img src="{{ url_for('static', filename='Images/11766.png') }}" alt="steps">
+        <div class="step-info">
+          <h4>Lastly, The best cover is selected using blockchain</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium beatae repellat facilis! Dolores
+            perferendis nulla sit ex sequi provident repudiandae laboriosam? Quod corporis saepe labore modi atque
+            expedita error! Accusantium!</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script src="{{ url_for('static', filename='Js/home.js') }}"></script>
 {% endblock %}

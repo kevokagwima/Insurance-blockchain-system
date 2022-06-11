@@ -40,7 +40,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 1rem 3.5rem;
   position: fixed;
   top: 0;
   min-width: 100vw;
@@ -117,7 +117,7 @@ header {
 
 .profile a:hover,
 .profile a:focus {
-  background-color: var(--main-bgcolor);
+  background-color: #012147;
   border-radius: 0.2rem;
   text-indent: 10px;
 }
