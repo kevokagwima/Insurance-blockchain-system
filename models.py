@@ -55,6 +55,7 @@ class Session(db.Model):
   __tablename__ = 'Session'
   id = db.Column(db.Integer(), primary_key=True)
   session_id = db.Column(db.Integer(), nullable=False, unique=True)
+  beneficiary = db.Column(db.String(20))
   start_date = db.Column(db.DateTime(), nullable=False)
   end_date = db.Column(db.DateTime())
   status = db.Column(db.String(10), nullable=False)

@@ -12,8 +12,8 @@
 .snap {
   margin-top: 4.2rem;
   max-height: 45.5rem;
-  /* overflow-y: scroll; */
-  /* scroll-snap-type: y mandatory; */
+  /* overflow-y: scroll;
+  scroll-snap-type: y mandatory; */
 }
 
 .home {
@@ -52,11 +52,14 @@
   background-color: greenyellow;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: 0.2s ease;
 }
 
 #btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  background-color: transparent;
+  outline: 2px solid greenyellow;
+  color: white;
 }
 
 .home > img {
@@ -68,7 +71,7 @@
 }
 
 .get-started {
-  /* scroll-snap-align: center; */
+  /* scroll-snap-align: start; */
   min-height: 45.5rem;
   color: white;
   padding: 2rem;
@@ -99,7 +102,7 @@
   box-shadow: 0 0 10px -5px black;
   transform: translateY(15rem);
   opacity: 0;
-  transition: 0.6s ease;
+  transition: 0.3s ease;
   min-height: 40rem;
 }
 

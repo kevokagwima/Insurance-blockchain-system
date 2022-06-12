@@ -1,8 +1,8 @@
 Life_insurance = {
   1:{
-    'question': "Select beneficiary of cover",
+    'question': "Have you or any member of your family proposed for this insurance suffered from any complaint which may necessitate a surgical operation or for which you reasonably anticipate the necessity of treatment?",
     'choices': {"Yes", "No"},
-    'points': 1
+    'points': 5
   },
   2:{
     'question': "Have you ever had any sugery, been confined or treated in a hospital, sanatorium or any other medical institution?",

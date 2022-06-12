@@ -83,21 +83,19 @@ def home():
 
 @app.route("/session")
 def session():
-  session = Session.query.filter_by(user=current_user.id).first()
+  session = Session.query.filter_by(user=current_user.id, status="Active").first()
   if session:
-    if session.status == "Active":
-      flash(f"You have an active sesssion, complete it before starting another one", category="warning")
-      return redirect(url_for('questions'))
-  else:
-    new_session = Session(
-      session_id = random.randint(10000000,99999999),
-      user = current_user.id,
-      start_date = datetime.datetime.now(),
-      status = "Active"
-    )
-    db.session.add(new_session)
-    db.session.commit()
-    flash(f"Your questions are ready", category="success")
+    flash(f"You have an active session, complete it before starting another one", category="warning")
+    return redirect(url_for('questions'))
+  new_session = Session(
+    session_id = random.randint(10000000,99999999),
+    user = current_user.id,
+    start_date = datetime.datetime.now(),
+    status = "Active"
+  )
+  db.session.add(new_session)
+  db.session.commit()
+  flash(f"Your questions are ready", category="success")
   return redirect(url_for('questions'))
 
 @app.route("/select-major-insurance", methods=["POST", "GET"])
@@ -106,7 +104,9 @@ def select_major_insurance():
   session = Session.query.filter_by(user=current_user.id, status="Active").first()
   if session:
     selected_type = request.form.get("type")
+    selected_beneficiary = request.form.get("beneficiary")
     session.major_insurance = selected_type
+    session.beneficiary = selected_beneficiary
     db.session.commit()
     flash(f"Insurance Cover selected successfully", category="success")
     return redirect(url_for('questions'))
@@ -153,10 +153,12 @@ def answers():
 @login_required
 def portal():
   session = Session.query.filter_by(user=current_user.id, status="Closed").first()
-  major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
-  answers = Answers.query.filter_by(user=current_user.id, session=session.id).all()
+  if session:
+    major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
+    answers = Answers.query.filter_by(user=current_user.id, session=session.id).all()
+    return render_template("portal.html", session=session, major_Insurance=major_Insurance, answers=answers)
 
-  return render_template("portal.html", session=session, major_Insurance=major_Insurance, answers=answers)
+  return render_template("portal.html")
 
 if __name__ == '__main__':
   app.run(debug=True)

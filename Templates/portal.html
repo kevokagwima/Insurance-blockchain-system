@@ -16,6 +16,7 @@ Insurance | Summary
 <div class="summary">
   <h4>Summary</h4>
   <div class="summary-info">
+    {% if session %}
     <div class="session-info">
       <button class="accordion">Session ID <span>{{ session.session_id }}</span>
         <span id="status">{{ session.status }}</span>
@@ -62,6 +63,11 @@ Insurance | Summary
         </div>
       </div>
     </div>
+    {% else %}
+    <div class="else">
+      <h4>No summary to show</h4>
+    </div>
+    {% endif %}
   </div>
 </div>
 </div>

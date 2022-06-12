@@ -33,8 +33,15 @@ Insurance | Questions
         {% endfor %}
       </select>
     </div>
+    <div class="input">
+      <label for="type">Select beneficiary of cover</label>
+      <select name="beneficiary" id="type">
+        <option value="Personal">Personal</option>
+        <option value="Third-party">Third-party</option>
+      </select>
+    </div>
     <button class="btn" type="submit">
-      <span class="button--text">SUBMIT</span>
+      <span class="button--text">NEXT</span>
     </button>
   </form>
   {% endif %}
