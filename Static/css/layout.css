@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cutive&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Rye&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chonburi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sunflower&display=swap");
 
 * {
   box-sizing: border-box;
@@ -18,6 +22,9 @@
   --links-font: "Mallanna", sans-serif;
   --heading-font: "Cutive", serif;
   --paragraph-font: "Lato", sans-serif;
+  --font-1: "Racing Sans One", cursive;
+  --font-2: "Chonburi", cursive;
+  --font-3: "Sunflower", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -137,10 +144,7 @@ header {
   position: absolute;
   width: 18px;
   height: 20px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   margin: auto;
   border: 3px solid transparent;
   border-top-color: white;

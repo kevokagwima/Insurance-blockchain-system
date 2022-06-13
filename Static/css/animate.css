@@ -1,0 +1,48 @@
+.animate {
+  margin-top: 4.2rem;
+  min-height: 45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: var(--font-2);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.eclipse:before {
+  outline: none;
+  display: block;
+  position: relative;
+  content: "";
+  height: 50px;
+  width: 50px;
+  -webkit-animation: eclipse 1s infinite ease;
+  animation: eclipse 1s infinite ease;
+  background-color: white;
+  border-radius: 100%;
+}
+
+@-webkit-keyframes eclipse {
+  from {
+    -webkit-box-shadow: inset 50px 0 0 0 var(--main-bgcolor);
+    box-shadow: inset 50px 0 0 0 var(--main-bgcolor);
+  }
+  to {
+    -webkit-box-shadow: inset -50px 0 0 0 var(--main-bgcolor);
+    box-shadow: inset -50px 0 0 0 var(--main-bgcolor);
+  }
+}
+
+@keyframes eclipse {
+  from {
+    -webkit-box-shadow: inset 50px 0 0 0 var(--main-bgcolor);
+    box-shadow: inset 50px 0 0 0 var(--main-bgcolor);
+  }
+  to {
+    -webkit-box-shadow: inset -50px 0 0 0 var(--main-bgcolor);
+    box-shadow: inset -50px 0 0 0 var(--main-bgcolor);
+  }
+}

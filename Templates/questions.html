@@ -28,6 +28,7 @@ Insurance | Questions
     <div class="input">
       <label for="type">Select type of cover</label>
       <select name="type" id="type">
+        <option selected disabled value="">Choose your answer</option>
         {% for major in major_insurances %}
         <option value="{{ major.id }}">{{ major.name }}</option>
         {% endfor %}
@@ -36,6 +37,7 @@ Insurance | Questions
     <div class="input">
       <label for="type">Select beneficiary of cover</label>
       <select name="beneficiary" id="type">
+        <option selected disabled value="">Choose your answer</option>
         <option value="Personal">Personal</option>
         <option value="Third-party">Third-party</option>
       </select>

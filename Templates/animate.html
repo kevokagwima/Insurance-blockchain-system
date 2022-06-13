@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+{% endblock %}
+
+{% block title %}
+Insurance | Recommended Cover
+{% endblock %}
+
+{% block body %}
+<div class="animate">
+  <div class="eclipse"></div>
+  {% if info %}
+  <h4>{{ info }}</h4>
+  {% endif %}
+</div>
+
+{% endblock %}

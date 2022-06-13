@@ -1,14 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Rye&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chonburi&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sunflower&display=swap");
-
-:root {
-  --font-1: "Racing Sans One", cursive;
-  --font-2: "Chonburi", cursive;
-  --font-3: "Sunflower", sans-serif;
-}
-
 .snap {
   margin-top: 4.2rem;
   max-height: 45.5rem;
@@ -55,7 +44,8 @@
   transition: 0.2s ease;
 }
 
-#btn:hover {
+#btn:hover,
+#btn:focus {
   transform: scale(1.05);
   background-color: transparent;
   outline: 2px solid greenyellow;

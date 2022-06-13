@@ -105,10 +105,15 @@ def select_major_insurance():
   if session:
     selected_type = request.form.get("type")
     selected_beneficiary = request.form.get("beneficiary")
-    session.major_insurance = selected_type
-    session.beneficiary = selected_beneficiary
-    db.session.commit()
-    flash(f"Insurance Cover selected successfully", category="success")
+    if selected_type is None:
+      flash(f"Please select an insurance cover", category="danger")
+    elif selected_beneficiary is None:
+      flash(f"Please select a beneficiary for the insurance cover", category="danger")
+    else:
+      session.major_insurance = selected_type
+      session.beneficiary = selected_beneficiary
+      db.session.commit()
+      flash(f"Insurance Cover selected successfully", category="success")
     return redirect(url_for('questions'))
   else:
     flash(f"No session has been created", category="danger")
@@ -130,24 +135,36 @@ def answers():
   major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
   answers = request.form.getlist("answer")
   for answer in answers:
-    new_answer = Answers(
-      unique_id = random.randint(10000000,99999999),
-      choice = answer,
-      Hash = bcrypt.generate_password_hash("12345").decode("utf-8"),
-      user = current_user.id,
-      major_Insurance = major_Insurance.id,
-      session = session.id
-    )
-    db.session.add(new_answer)
-    if answer == "Yes":
-      new_answer.point = 5
+    if answer is None:
+      flash(f"Please fill in all the questions", category="danger")
     else:
-      new_answer.point = 2
-  session.end_date = datetime.datetime.now()
-  session.status = "Closed"
-  db.session.commit()
-  flash(f"{len(answers)} answers received", category="success")
-  return redirect(url_for('portal'))
+      new_answer = Answers(
+        unique_id = random.randint(10000000,99999999),
+        choice = answer,
+        Hash = bcrypt.generate_password_hash("12345").decode("utf-8"),
+        user = current_user.id,
+        major_Insurance = major_Insurance.id,
+        session = session.id
+      )
+      db.session.add(new_answer)
+      if answer == "Yes":
+        new_answer.point = 5
+      else:
+        new_answer.point = 2
+    session.end_date = datetime.datetime.now()
+    session.status = "Closed"
+    # db.session.commit()
+    flash(f"{len(answers)} answers received", category="success")
+    return redirect(url_for('recommended_cover'))
+
+@app.route("/recommended-cover")
+def recommended_cover():
+  session = Session.query.filter_by(user=current_user.id, status="Active").first()
+  answers = Answers.query.filter_by(session=session.id).all()
+  total_cost = []
+  for answer in answers:
+    total_cost.append(answer.point)
+  return render_template("animate.html", info=f"Finding the best cover for you {sum(total_cost)}"), {"Refresh": f"8; url=http://127.0.0.1:5000/home"}
 
 @app.route("/summary")
 @login_required
