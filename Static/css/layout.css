@@ -15,8 +15,8 @@
 }
 
 :root {
-  --main-bgcolor: #040d21;
-  --lighter-bgcolor: #042c6a;
+  --main-bgcolor: #0c252f;
+  --lighter-bgcolor: #1c313a;
   --red: #ec1848;
   --logo-font: "Contrail One", cursive;
   --links-font: "Mallanna", sans-serif;
@@ -71,7 +71,9 @@ header {
 }
 
 .login p > b {
-  color: greenyellow;
+  background: -webkit-linear-gradient(red, red, orange, yellow);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .links {
@@ -118,15 +120,16 @@ header {
   padding: 0.5rem;
   font-family: "Dancing Script", cursive;
   font-family: "Varela Round", sans-serif;
-  transition: 0.3s ease;
+  transition: 0.5s ease;
   font-size: 15px;
 }
 
 .profile a:hover,
 .profile a:focus {
-  background-color: #012147;
+  background-image: linear-gradient(60deg, aqua, greenyellow);
   border-radius: 0.2rem;
   text-indent: 10px;
+  color: black;
 }
 
 .show-profile {
@@ -147,7 +150,7 @@ header {
   inset: 0;
   margin: auto;
   border: 3px solid transparent;
-  border-top-color: white;
+  border-top-color: black;
   border-radius: 50%;
   animation: button-loading-spinner 1s ease infinite;
 }
