@@ -52,13 +52,48 @@
   transform: scale(1.05);
 }
 
-.home > img {
+.image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 60%;
+  z-index: -1;
+  background-image: url(../Images/insurance.png);
+  background-repeat: no-repeat;
+  background-size: 100% 110%;
+  background-position: 5rem top;
+  overflow: hidden;
+}
+
+.image::before {
+  content: "";
+  position: absolute;
+  inset: -5rem auto auto -8rem;
+  height: 200%;
+  width: 30%;
+  background-color: var(--main-bgcolor);
+  transform: rotate(10deg);
+  z-index: 10;
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  inset: -5rem 0 auto auto;
+  height: 200%;
+  width: 100%;
+  background-color: var(--main-bgcolor);
+  opacity: 0.6;
+}
+
+/* .image img {
   position: absolute;
   top: 15rem;
   right: 2rem;
   max-height: 30rem;
   z-index: -1;
-}
+} */
 
 .get-started {
   /* scroll-snap-align: start; */

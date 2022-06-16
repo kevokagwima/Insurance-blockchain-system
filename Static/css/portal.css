@@ -1,3 +1,7 @@
+/* header {
+  display: none;
+} */
+
 .summary {
   color: white;
   padding: 5rem 1rem 1rem;
@@ -6,9 +10,9 @@
 
 .summary > h4 {
   text-align: center;
-  font-family: var(--heading-font);
+  font-family: var(--font-1);
   letter-spacing: 1px;
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 
 .summary-info {
@@ -41,6 +45,11 @@
   transition: 0.3s ease;
   background-color: var(--main-bgcolor);
   position: relative;
+}
+
+.recommend {
+  background-image: linear-gradient(60deg, aqua, greenyellow);
+  color: black;
 }
 
 .accordion:focus {
@@ -95,6 +104,7 @@
 
 .answers .panel .panel-info {
   display: flex;
+  flex-direction: column;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -102,7 +112,8 @@
 
 .answers .panel .panel-info p {
   padding: 0.5rem 1rem;
-  background-color: var(--lighter-bgcolor);
+  background-image: linear-gradient(60deg, aqua, greenyellow);
+  color: black;
   border-radius: 30rem;
   min-width: max-content;
 }

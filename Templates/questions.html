@@ -18,7 +18,7 @@ Insurance | Questions
   {% endif %}
   {% if session.major_insurance %}
   {% for insurance in major_insurances if insurance.id == session.major_insurance %}
-  <p id="uniques">{{ insurance.name }}</p>
+  <p id="uniques">{{ session.beneficiary }} - {{ insurance.name }}</p>
   {% endfor %}
   {% endif %}
   <h4>Answer the following questions <br> to customize your cover</h4>

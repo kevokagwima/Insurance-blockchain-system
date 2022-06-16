@@ -68,6 +68,7 @@ class Answers(db.Model):
   __tablename__ = 'answers'
   id = db.Column(db.Integer(), primary_key=True)
   unique_id = db.Column(db.Integer(), nullable=False, unique=True)
+  question = db.Column(db.Integer(), nullable=False)
   choice = db.Column(db.String(3), nullable=False)
   point = db.Column(db.Integer(), nullable=False, default=0)
   Hash = db.Column(db.String(100), nullable=False)

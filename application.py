@@ -132,14 +132,16 @@ def questions():
 @login_required
 def answers():
   session = Session.query.filter_by(user=current_user.id, status="Active").first()
+  questions = Life_insurance.keys()
   major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
   answers = request.form.getlist("answer")
-  for answer in answers:
+  for question, answer in zip(questions, answers):
     if answer is None:
       flash(f"Please fill in all the questions", category="danger")
     else:
       new_answer = Answers(
         unique_id = random.randint(10000000,99999999),
+        question = question,
         choice = answer,
         Hash = bcrypt.generate_password_hash("12345").decode("utf-8"),
         user = current_user.id,
@@ -151,31 +153,47 @@ def answers():
         new_answer.point = 5
       else:
         new_answer.point = 2
-    session.end_date = datetime.datetime.now()
-    session.status = "Closed"
-    # db.session.commit()
-    flash(f"{len(answers)} answers received", category="success")
-    return redirect(url_for('recommended_cover'))
+  session.end_date = datetime.datetime.now()
+  session.status = "Closed"
+  db.session.commit()
+  flash(f"Processing {len(answers)} answers", category="success")
+  return redirect(url_for('recommended_cover'))
 
 @app.route("/recommended-cover")
 def recommended_cover():
-  session = Session.query.filter_by(user=current_user.id, status="Active").first()
+  if current_user.session:
+    session = current_user.session[-1]
   answers = Answers.query.filter_by(session=session.id).all()
+  insurance_scores = []
   total_cost = []
+  insurance_covers = Insurance_covers.query.all()
+  for insurance_cover in insurance_covers:
+    insurance_scores.append(insurance_cover.avg_score)
   for answer in answers:
     total_cost.append(answer.point)
-  return render_template("animate.html", info=f"Finding the best cover for you {sum(total_cost)}"), {"Refresh": f"8; url=http://127.0.0.1:5000/home"}
+  recommend = min(insurance_scores, key=lambda x:abs(x-sum(total_cost)))
+  recommend_cover = Insurance_covers.query.filter_by(avg_score = recommend).first()
+  session.insurance_cover = recommend_cover.id
+  db.session.commit()
+  
+  return render_template("animate.html", info="Finding the best cover for you"), {"Refresh": f"8; url=http://127.0.0.1:5000/summary"}
 
 @app.route("/summary")
 @login_required
 def portal():
-  session = Session.query.filter_by(user=current_user.id, status="Closed").first()
-  if session:
-    major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
-    answers = Answers.query.filter_by(user=current_user.id, session=session.id).all()
-    return render_template("portal.html", session=session, major_Insurance=major_Insurance, answers=answers)
+  if current_user.session:
+    session = current_user.session[-1]
+    if session:
+      major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
+      answers = Answers.query.filter_by(user=current_user.id, session=session.id).all()
+      recommended_cover = Insurance_covers.query.filter_by(id=session.insurance_cover).first()
+      
+      return render_template("portal.html", session=session, major_Insurance=major_Insurance, answers=answers, recommended_cover=recommended_cover)
 
-  return render_template("portal.html")
+    return render_template("portal.html")
+  else:
+    flash(f"No summary found", category="danger")
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
   app.run(debug=True)

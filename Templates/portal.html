@@ -39,9 +39,26 @@ Insurance | Summary
         <hr>
         <div class="panel-info">
           {% if major_Insurance %}
-          <p>{{ major_Insurance.name }}</p>
+          <p>{{ session.beneficiary }} - {{ major_Insurance.name }}</p>
           {% else %}
           <p class="else">No major insurance selected</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="major-insurance">
+      <button class="accordion recommend">Recommended Insurance Cover
+        <span id="status">{{ recommended_cover.name }}</span>
+      </button>
+      <div class="panel">
+        <hr>
+        <div class="panel-info">
+          {% if recommended_cover %}
+          <p>Insurance cover ID - <span>{{ recommended_cover.unique_id }}</span></p>
+          <p>{{ recommended_cover.name }} - <span>{{ recommended_cover.category }}</span></p>
+          <p>Monthly premium - <span>{{ "Ksh {:,}".format(recommended_cover.cost) }}</span></p>
+          {% else %}
+          <p class="else">No insurance cover was recommended</p>
           {% endif %}
         </div>
       </div>
