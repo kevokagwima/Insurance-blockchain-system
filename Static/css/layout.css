@@ -103,7 +103,7 @@ header {
   border-radius: 0.5rem;
   padding: 0.5rem;
   position: absolute;
-  inset: 4rem 2rem auto auto;
+  inset: 4.5rem 2rem auto auto;
   min-width: 16.5vw;
   display: flex;
   flex-direction: column;
@@ -174,7 +174,7 @@ header {
   max-width: 60rem;
   margin: 0 auto;
   padding: 2px 0 0;
-  animation: fade-away 1s 5s forwards;
+  animation: fade-away 1s 4s forwards;
 }
 
 @keyframes fade-away {
@@ -195,7 +195,7 @@ header {
   font-size: 15px;
   margin-bottom: 4px;
   min-width: 10vw;
-  max-width: 40vw;
+  max-width: 30vw;
   margin-inline: auto;
   border-radius: 5px;
   overflow: hidden;

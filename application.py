@@ -82,6 +82,7 @@ def home():
     return render_template("home.html")
 
 @app.route("/session")
+@login_required
 def session():
   session = Session.query.filter_by(user=current_user.id, status="Active").first()
   if session:
@@ -132,10 +133,10 @@ def questions():
 @login_required
 def answers():
   session = Session.query.filter_by(user=current_user.id, status="Active").first()
-  questions = Life_insurance.keys()
+  questions = Life_insurance
   major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
   answers = request.form.getlist("answer")
-  for question, answer in zip(questions, answers):
+  for question, answer in zip(questions.keys(), answers):
     if answer is None:
       flash(f"Please fill in all the questions", category="danger")
     else:
@@ -150,9 +151,9 @@ def answers():
       )
       db.session.add(new_answer)
       if answer == "Yes":
-        new_answer.point = 5
+        new_answer.point = questions[question]['yes-points']
       else:
-        new_answer.point = 2
+        new_answer.point = questions[question]['no-points']
   session.end_date = datetime.datetime.now()
   session.status = "Closed"
   db.session.commit()
@@ -176,24 +177,30 @@ def recommended_cover():
   session.insurance_cover = recommend_cover.id
   db.session.commit()
   
-  return render_template("animate.html", info="Finding the best cover for you"), {"Refresh": f"8; url=http://127.0.0.1:5000/summary"}
+  return render_template("animate.html", info="Finding the best cover for you"), {"Refresh": f"8; url=http://127.0.0.1:5000/summary/{session.id}"}
 
-@app.route("/summary")
+@app.route("/summary/<int:session_id>")
 @login_required
-def portal():
+def summary(session_id):
   if current_user.session:
-    session = current_user.session[-1]
+    session = Session.query.get(session_id)
     if session:
       major_Insurance = Major_Insurance.query.filter_by(id=session.major_insurance).first()
       answers = Answers.query.filter_by(user=current_user.id, session=session.id).all()
       recommended_cover = Insurance_covers.query.filter_by(id=session.insurance_cover).first()
       
-      return render_template("portal.html", session=session, major_Insurance=major_Insurance, answers=answers, recommended_cover=recommended_cover)
+      return render_template("summary.html", session=session, major_Insurance=major_Insurance, answers=answers, recommended_cover=recommended_cover)
 
-    return render_template("portal.html")
+    return render_template("summary.html")
   else:
     flash(f"No summary found", category="danger")
     return redirect(url_for('home'))
+
+@app.route("/previous-sessions")
+def prev_sessions():
+  major_insurance = Major_Insurance.query.all()
+
+  return render_template("sessions.html", major_insurance=major_insurance)
 
 if __name__ == '__main__':
   app.run(debug=True)

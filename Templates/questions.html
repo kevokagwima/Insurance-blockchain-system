@@ -11,6 +11,11 @@ Insurance | Questions
 
 {% block body %}
 <div class="questions">
+  <a href="{{ url_for('home') }}">
+    <div class="back">
+      <i class="fa fa-angle-double-left"></i>
+    </div>
+  </a>
   {% if session %}
   <p id="unique">Session ID -
     <span>{{ session.session_id }}</span>

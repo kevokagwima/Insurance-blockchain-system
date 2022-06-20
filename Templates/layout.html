@@ -8,6 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='Favicon/favicon-16x16.png') }}">
   <title>
     {% block title %} {% endblock %}
   </title>
@@ -36,7 +38,10 @@
       {% endif %}
     </div>
     <div class="profile">
-      <a href="{{ url_for('portal') }}">Summary</a>
+      {% if current_user.session %}
+      <a href="{{ url_for('summary', session_id=current_user.session[-1].id) }}">Summary</a>
+      {% endif %}
+      <a href="{{ url_for('prev_sessions') }}">Previous Sessions</a>
       <a href="#">General Stats</a>
       <a id="logout" href="{{ url_for('logout') }}">Logout</a>
     </div>

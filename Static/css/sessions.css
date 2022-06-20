@@ -1,0 +1,91 @@
+.sessions {
+  min-height: 100vh;
+  color: white;
+  padding: 5rem 1rem 1rem 3.5rem;
+}
+
+.sessions > h4 {
+  font-family: var(--font-2);
+  font-size: 1.5rem;
+  color: whitesmoke;
+}
+
+#more-info {
+  color: grey;
+  font-family: var(--paragraph-font);
+  margin-top: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+}
+
+.session-details {
+  padding: 2rem 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.session-info {
+  background-color: var(--lighter-bgcolor);
+  box-shadow: 0 0 10px -5px black;
+  max-width: 30vw;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.session-info:hover {
+  transform: scale(1.05);
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.2rem;
+  background-color: red;
+  font-family: var(--paragraph-font);
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+.image {
+  min-width: 20vw;
+  min-height: 15vh;
+  overflow: hidden;
+  background-image: linear-gradient(to right, greenyellow, aqua);
+  display: grid;
+  place-items: center;
+}
+
+.image > h4 {
+  color: black;
+  font-family: var(--font-2);
+  font-size: 1.8rem;
+}
+
+.info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.info p {
+  font-family: var(--paragraph-font);
+  color: whitesmoke;
+  letter-spacing: 1px;
+}
+
+.info p > span {
+  font-weight: bold;
+  color: greenyellow;
+}

@@ -57,9 +57,9 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: 60%;
+  width: 55%;
   z-index: -1;
-  background-image: url(../Images/insurance.png);
+  background-image: url(../Images/arena-g386c8f4ee_1920.jpg);
   background-repeat: no-repeat;
   background-size: 100% 110%;
   background-position: 5rem top;
@@ -73,7 +73,7 @@
   height: 200%;
   width: 30%;
   background-color: var(--main-bgcolor);
-  transform: rotate(10deg);
+  transform: rotate(15deg);
   z-index: 10;
 }
 
@@ -83,17 +83,7 @@
   inset: -5rem 0 auto auto;
   height: 200%;
   width: 100%;
-  background-color: var(--main-bgcolor);
-  opacity: 0.6;
 }
-
-/* .image img {
-  position: absolute;
-  top: 15rem;
-  right: 2rem;
-  max-height: 30rem;
-  z-index: -1;
-} */
 
 .get-started {
   /* scroll-snap-align: start; */
