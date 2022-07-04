@@ -14,7 +14,7 @@ Insurance | Home
   <div class="home">
     <h4>Get an insurance cover <br> that best suites <br> you</h4>
     <p>No more over-payment for insurance cover <br> you don't need</p>
-    {% if session %}
+    {% if session and current_user.is_authenticated %}
     <a href="{{ url_for('questions') }}">
       <button id="btn">Resume Session</button>
     </a>

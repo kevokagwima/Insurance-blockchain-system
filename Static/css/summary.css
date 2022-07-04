@@ -1,11 +1,10 @@
-/* header {
-  display: none;
-} */
-
 .summary {
   color: white;
   padding: 5rem 1rem 1rem;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .summary > h4 {
@@ -120,4 +119,18 @@
 
 .else {
   color: red;
+}
+
+.mine {
+  margin-top: 3rem;
+  border: none;
+  background-image: linear-gradient(90deg, greenyellow, aqua);
+  padding: 0.9em 3em;
+  border-radius: 30rem;
+  font-family: system-ui;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
 }

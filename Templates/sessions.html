@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sessions.css') }}">
+{% endblock %}
+
+{% block title %}
+Insurance | Previous Sessions
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block body %}
+<div class="sessions">
+  <h4>Previous Sessions</h4>
+  <p id="more-info">You've had {{ current_user.session|count }} sessions</p>
+  <div class="session-details">
+    {% set sessions = current_user.session %}
+    {% for session in sessions|sort(attribute="start_date", reverse=True) %}
+    <a href="{{ url_for('summary', session_id=session.id) }}">
+      <div class="session-info">
+        {% if session.status == "Active" %}
+        <div class="badge">Ongoing</div>
+        {% endif %}
+        <div class="image">
+          <h4>Session ID <span>{{ session.session_id }}</span></h4>
+        </div>
+        <div class="info">
+          <p>Major Insurance -
+            <span>
+              {% for major in major_insurance if major.id == session.major_insurance %}
+              {{ major.name }}
+              {% endfor %}
+            </span>
+          </p>
+          <p>Beneficiary - <span>{{ session.beneficiary }}</span></p>
+          <p>Status - <span>{{ session.status }}</span></p>
+          <p>Answered <span>{{ session.questions|count }}</span> questions</p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

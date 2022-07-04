@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/summary.css') }}">
+{% endblock %}
+
+{% block title %}
+Insurance | Summary
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block body %}
+<div class="summary">
+  <h4>Summary</h4>
+  <div class="summary-info">
+    {% if session %}
+    <div class="session-info">
+      <button class="accordion">Session ID <span>{{ session.session_id }}</span>
+        <span id="status">{{ session.status }}</span>
+      </button>
+      <div class="panel">
+        <hr>
+        <div class="panel-info">
+          <p>Start Date - <span>{{ session.start_date.strftime("%d/%m/%Y at %I:%M %p") }}</span></p>
+          {% if session.end_date %}
+          <p>End Date - <span>{{ session.end_date.strftime("%d/%m/%Y at %I:%M %p") }}</span></p>
+          {% else %}
+          <p>End Date - <span>Currently ongoing</span></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="major-insurance">
+      <button class="accordion">Major insurance chosen</button>
+      <div class="panel">
+        <hr>
+        <div class="panel-info">
+          {% if major_Insurance %}
+          <p>{{ session.beneficiary }} - {{ major_Insurance.name }}</p>
+          {% else %}
+          <p class="else">No major insurance selected</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="major-insurance">
+      <button class="accordion recommend">Recommended Insurance Cover
+        <span id="status">{{ recommended_cover.name }}</span>
+      </button>
+      <div class="panel">
+        <hr>
+        <div class="panel-info">
+          {% if recommended_cover %}
+          <p>Insurance cover ID - <span>{{ recommended_cover.unique_id }}</span></p>
+          <p>{{ recommended_cover.name }} - <span>{{ recommended_cover.category }}</span></p>
+          <p>Monthly premium - <span>{{ "Ksh {:,}".format(recommended_cover.cost) }}</span></p>
+          {% else %}
+          <p class="else">No insurance cover was recommended</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="answers">
+      <button class="accordion">My answers
+        <span id="status">Answered {{ answers|count }} questions</span>
+      </button>
+      <div class="panel">
+        <hr>
+        <div class="panel-info">
+          {% if answers %}
+          {% for answer in answers %}
+          <p>{{ answer.Hash }}</p>
+          {% endfor %}
+          {% else %}
+          <p class="else">No answers given</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="else">
+      <h4>No summary to show</h4>
+    </div>
+    {% endif %}
+  </div>
+  <a href="{{ url_for('decrypt', session_id=session.id) }}">
+    <button class="mine btn">
+      <span class="button--text">MINE</span>
+    </button>
+  </a>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/portal.js') }}"></script>
+{% endblock %}

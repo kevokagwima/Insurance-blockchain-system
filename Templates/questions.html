@@ -69,6 +69,23 @@ Insurance | Questions
       <span class="button--text">SUBMIT</span>
     </button>
   </form>
+  {% elif session.major_insurance == 3 %}
+  <form method="post" action="{{ url_for('answers') }}">
+    {% for question in auto %}
+    <div class="input">
+      <label>{{ question[1]['question'] }}</label>
+      <select required name="answer">
+        <option selected disabled value="">Choose your answer</option>
+        {% for choices in question[1]['choices'] %}
+        <option value="{{ choices }}">{{ choices }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endfor %}
+    <button class="btn" type="submit">
+      <span class="button--text">SUBMIT</span>
+    </button>
+  </form>
   {% endif %}
 </div>
 {% endblock %}

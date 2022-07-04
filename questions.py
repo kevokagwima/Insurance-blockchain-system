@@ -45,4 +45,42 @@ Life_insurance = {
 
 Health_insurance = {}
 
-auto_insurance = {}
+Auto_insurance = {
+  1:{
+    'question': "Are you currently insured by any other insurance company?",
+    'choices': {"Yes", "No"},
+    'yes-points': 3,
+    'no-points': 2
+  },
+  2:{
+    'question': "Is the vehicle registered in your name?",
+    'choices': {"Yes", "No"},
+    'yes-points': 2,
+    'no-points': 1
+  },
+  3:{
+    'question': "Will your vehicle be used for any other purposes other than to move you from place to place?",
+    'choices': {"Yes", "No"},
+    'yes-points': 2,
+    'no-points': 4
+  },
+  4:{
+    'question': "Will the vehicle be driven by other drivers other than the proposer?",
+    'choices': {"Yes", "No"},
+    'yes-points': 3,
+    'no-points': 2
+  },
+  5:{
+    'question': "Is any anti-theft device installed?",
+    'choices': {"Yes", "No"},
+    'yes-points': 3,
+    'no-points': 5
+  },
+
+  6:{
+    'question': "Has any insurance company rejected your submission before?",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+}
