@@ -38,7 +38,7 @@ class Major_Insurance(db.Model):
   name = db.Column(db.String(30), nullable=False, unique=True)
   insurance_cover = db.relationship("Insurance_covers", backref="sub-category", lazy=True)
   session = db.relationship("Session", backref="major_session", lazy=True)
-  session = db.relationship("Answers", backref="major_answers", lazy=True)
+  answers = db.relationship("Answers", backref="major_answers", lazy=True)
 
 class Insurance_covers(db.Model):
   __tablename__ = 'Insurance_cover'

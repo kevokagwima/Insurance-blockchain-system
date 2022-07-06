@@ -32,7 +32,7 @@ Insurance | Questions
   <form id="form1" action="{{ url_for('select_major_insurance') }}" method="post">
     <div class="input">
       <label for="type">Select type of cover</label>
-      <select name="type" id="type">
+      <select required name="type" id="type">
         <option selected disabled value="">Choose your answer</option>
         {% for major in major_insurances %}
         <option value="{{ major.id }}">{{ major.name }}</option>
@@ -41,7 +41,7 @@ Insurance | Questions
     </div>
     <div class="input">
       <label for="type">Select beneficiary of cover</label>
-      <select name="beneficiary" id="type">
+      <select required name="beneficiary" id="type">
         <option selected disabled value="">Choose your answer</option>
         <option value="Personal">Personal</option>
         <option value="Third-party">Third-party</option>
@@ -72,6 +72,20 @@ Insurance | Questions
   {% elif session.major_insurance == 3 %}
   <form method="post" action="{{ url_for('answers') }}">
     {% for question in auto %}
+    <div class="input">
+      <label>{{ question[1]['question'] }}</label>
+      <select required name="answer">
+        <option selected disabled value="">Choose your answer</option>
+        {% for choices in question[1]['choices'] %}
+        <option value="{{ choices }}">{{ choices }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endfor %}
+  </form>
+  {% elif session.major_insurance == 2 %}
+  <form method="post" action="{{ url_for('answers') }}">
+    {% for question in health %}
     <div class="input">
       <label>{{ question[1]['question'] }}</label>
       <select required name="answer">

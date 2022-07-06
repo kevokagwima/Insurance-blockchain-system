@@ -1,8 +1,19 @@
-8,Third Party Insurance,basic,10000,5,3
-9,Third Party-Fire and Theft,medium,25000,20,3
-10,Comprehensive Insurance,premium,80000,30,3
-11,Commercial Motor Insurance,medium,35000,22,3
-12,Personal Indemnity,basic,11000,10,3
-13,Own Damage,medium,22000,15,3
-14,Ancillary Fleet Covers,medium,50000,25,3
-15,Roadside Assistance,medium,30000,21,3
+1,Milele Health Plan,medium,30000,18,2
+2,Kinga ya Mkulima,basic,15000,10,2
+3,Linda Jamii Cover,basic,5000,5,2
+4,Telemedicine,basic,10000,8,2
+5,Intensive Care Cover,premium,60000,25,2
+6,Neonatal Care Cover,medium,30000,15,2
+7,Maternity Cover,medium,32000,18,2
+8,Ambulance Service Cover,medium,25000,12,2
+9,Endowment Plans,medium,30000,15,1
+10,Unit Linked Plans,medium,35000,20,1
+11,Life Insurance,basic,10000,5,1
+12,Money Back Life Insurance,medium,20000,12,1
+13,Whole Life Insurance,premium,80000,30,1
+14,Pension Plan,premium,70000,28,1
+15,Third Party Insurance,basic,5000,5,3
+16,Third Party Fire and Theft,medium,15000,10,3
+17,Comprehensive Car Insurance,premium,60000,25,3
+18,Personal Accident Cover,medium,20000,15,3
+19,Excess Protector,medium,25000,20,3

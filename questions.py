@@ -43,7 +43,50 @@ Life_insurance = {
   },
 }
 
-Health_insurance = {}
+Health_insurance = {
+  1:{
+    'question': "Has any medical insurance application by you or your dependant in the laast 12 months been: Accepted or declined",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+  2:{
+    'question': "Have you or your dependant had recurrent/persistent coughs, chest or lung problems?",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+  3:{
+    'question': "Have you or your dependant had recurrent/persistent fever or night sweats or weight loss?",
+    'choices': {"Yes", "No"},
+    'yes-points': 4,
+    'no-points': 2
+  },
+  4:{
+    'question': "Have you or your dependant had neurological, psychiatric or mental illness?",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+  5:{
+    'question': "Have you or your dependant had any chronic or recurring disease i.e. Asthma, fainting, ulcers, heart disease, cancer, kidney related problems?",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+  6:{
+    'question': "Have you or your dependant had an operation or scheduled for an operation or under regular medication/treatment?",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+  7:{
+    'question': "Have you or your dependant had disoders of reproductive system and skin, sickle cell?",
+    'choices': {"Yes", "No"},
+    'yes-points': 5,
+    'no-points': 2
+  },
+}
 
 Auto_insurance = {
   1:{
@@ -76,7 +119,6 @@ Auto_insurance = {
     'yes-points': 3,
     'no-points': 5
   },
-
   6:{
     'question': "Has any insurance company rejected your submission before?",
     'choices': {"Yes", "No"},

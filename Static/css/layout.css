@@ -71,9 +71,8 @@ header {
 }
 
 .login p > b {
-  background: -webkit-linear-gradient(greenyellow, aqua);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: greenyellow;
+  letter-spacing: 1px;
 }
 
 .links {
