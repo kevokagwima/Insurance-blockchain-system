@@ -21,3 +21,4 @@
 <h2>Questions Page</h2>
 <img src="https://user-images.githubusercontent.com/63863253/189726525-9ce1d8f1-4262-4b3a-a16c-941134bf281e.png">
 <img src="https://user-images.githubusercontent.com/63863253/189726691-8cda15f4-e0cd-4bc0-a4c6-99eada6457ab.png">
+<p>Once the user has answered all the questions, the system processes the answers and gives a summary of the session and then it displays the recommended insurance cover for the user.</p>
