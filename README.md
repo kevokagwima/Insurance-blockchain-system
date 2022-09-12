@@ -16,3 +16,8 @@
 <h1>Project screenshots</h1>
 <h2>The Home Page</h2>
 <img src="https://user-images.githubusercontent.com/63863253/189725785-342c861a-8d81-400c-a808-36bd7d4e8c83.png">
+<h3>Cover Type Selection Page</h3>
+<img src="https://user-images.githubusercontent.com/63863253/189726021-42a038ea-fe5e-4b58-af8c-392090a732cc.png">
+<h3>Questions Page</h3>
+<img src="https://user-images.githubusercontent.com/63863253/189726525-9ce1d8f1-4262-4b3a-a16c-941134bf281e.png">
+<img src="https://user-images.githubusercontent.com/63863253/189726691-8cda15f4-e0cd-4bc0-a4c6-99eada6457ab.png">
