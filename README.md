@@ -22,3 +22,8 @@
 <img src="https://user-images.githubusercontent.com/63863253/189726525-9ce1d8f1-4262-4b3a-a16c-941134bf281e.png">
 <img src="https://user-images.githubusercontent.com/63863253/189726691-8cda15f4-e0cd-4bc0-a4c6-99eada6457ab.png">
 <p>Once the user has answered all the questions, the system processes the answers and gives a summary of the session and then it displays the recommended insurance cover for the user.</p>
+<img src="https://user-images.githubusercontent.com/63863253/189728335-17dc597b-ccc2-4483-8ded-801dfd75602e.png">
+<p>Each answer is assigned a hash code so as to provide encryption for the users data.</p>
+<img src="https://user-images.githubusercontent.com/63863253/189728764-06ded870-a6ba-4605-ae87-01c1b8ab4466.png">
+<p>The user has the ability to mine the hash codes, this sends the summary of the session to the user's email address.</p>
+<img src="https://user-images.githubusercontent.com/63863253/189729696-18770a6c-be30-4735-b749-e2a7d91366c3.png">
