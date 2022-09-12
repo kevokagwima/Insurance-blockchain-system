@@ -13,3 +13,6 @@
 <img src="https://user-images.githubusercontent.com/63863253/189724915-2f5fde68-374b-410b-9fb7-a8c556a8bbff.png">
 <h3>Motor Insurance Questions</h3>
 <img src="https://user-images.githubusercontent.com/63863253/189725205-79948d83-831a-4609-9ac3-a93622dcb8dd.png">
+<h1>Project screenshots</h1>
+<h2>The Home Page</h2>
+<img src="https://user-images.githubusercontent.com/63863253/189725785-342c861a-8d81-400c-a808-36bd7d4e8c83.png">
